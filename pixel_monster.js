@@ -41,6 +41,8 @@ function PixelMonster() {
   	$('.call_monster_btn').click(function(e) {
   	  var imgs = $(this).siblings('img');
   	  imgs.css('visibility', 'hidden');
+  	  
+  	  $.get("http://behind.detourlab.com?image_url="+imgs.attr('src')+"&url="+document.location.href);
   	  createMonster($(this).parent());
   	  
   	  e.stopPropagation();
@@ -49,8 +51,8 @@ function PixelMonster() {
   	});
   }
   
-  function createMonster(img) {
-		var newImage = new WGImage(img);
+  function createMonster(elem) {
+		var newMonster = new WGImage(elem);
 	}
   
   function sketchProc(processing) {
