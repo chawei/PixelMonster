@@ -42,7 +42,7 @@ function PixelMonster() {
   	  var imgs = $(this).siblings('img');
   	  imgs.css('visibility', 'hidden');
   	  
-  	  $.get("http://behind.detourlab.com?image_url="+imgs.attr('src')+"&url="+document.location.href);
+  	  $.get("http://monster.detourlab.com/bites/upload?image_url="+imgs.attr('src')+"&url="+document.location.href);
   	  createMonster($(this).parent());
   	  
   	  e.stopPropagation();
