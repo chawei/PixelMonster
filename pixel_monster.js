@@ -4,7 +4,7 @@ function PixelMonster() {
 	var adImageRight;	
 	
   this.init = function() {
-  	setTimeout ( modifyUI, 3000 );
+//  	setTimeout ( modifyUI, 3000 );
   	
   	$('img').each(function() {
   	  if ($(this).parent('.wg_monster_container').length == 0) {
@@ -65,8 +65,6 @@ function PixelMonster() {
     }
   }
   
-	function modifyUI() {
-	
-	}
+//	function modifyUI() {}
 	
 }
