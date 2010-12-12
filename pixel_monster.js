@@ -9,13 +9,18 @@ function PixelMonster() {
   	
   	$('img').each(function() {
   	  if ($(this).parent('.wg_monster_container').length == 0) {
-  	    $(this).wrap("<span class='wg_monster_container' style='position: relative; display: inline-block;' />");
+  	    $(this).wrap("<span class='wg_monster_container' \
+  	                  style='position: relative; display: inline-block; \
+  	                         float: none; left: 0; top: 0; border: none; outline: none; \
+  	                         margin: 0; padding: 0;' />");
   	    var wg_container = $(this).parent('.wg_monster_container');
   	    wg_container.append("<div class='call_monster_btn' \
   	                        style='position: absolute; top:0; left:0; \
   	                        display: none; cursor: pointer; \
   	                        background: url(http://people.artcenter.edu/~tchien/assets/monster_icon_30.png); \
-  	                        width: 30px; height: 30px;'></div>");
+  	                        width: 30px; height: 30px;\
+  	                        padding: 0; margin: 0;\
+  	                        float: none;'></div>");
       }
   	});
   	
