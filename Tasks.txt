@@ -1,0 +1,14 @@
+	
+- Refractor WGDust() into its own class
+
+  - new a canvas in side of the class instead of using the whole window size
+
+
+- WGImage
+
+  - Change <img /> to 
+		<span class="wg_monster">
+			<canvas class="wg_image" />
+			<canvas class="wg_monster" />
+			<img class="hide"/>
+		</span>

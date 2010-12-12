@@ -1,0 +1,33 @@
+{
+  "name": "Pixel Monster",
+  "version": "0.1",
+  "description": "",
+  "icons": { "16": "icons/colors_icons.png",
+             "32": "icons/colors_icons.png",
+             "48": "icons/colors_icons.png",
+             "128": "icons/colors_icons.png" },
+  "page_action": 
+  {
+    "default_icon": "icons/colors_icons.png",
+    "default_title": "Pixel Monster",    
+    "popup": "popup.html"           
+  },
+  "background_page": "background_page.html",
+  "content_scripts":
+   [
+	{
+	"run_at": "document_start",
+      	"matches": ["http://*/*", "https://*/*", "ftp://*/*", "file://*/*"], 
+      	"js": ["processing-1.0.0.js", "p_base.js", "jquery.js", "pixel_monster.js","convert.js"],
+      	"all_frames": true
+    	}
+   ],
+  "minimum_chrome_version": "4.0",
+
+  "permissions": 
+  [
+  "tabs",
+  "http://*/*",
+  "https://*/*"
+  ]
+}
