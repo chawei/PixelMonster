@@ -120,11 +120,11 @@ function CurrentPage ()
   }
 
   me.displayDefault = function(tabId){
-    chrome.pageAction.setIcon({tabId: tabId, path: "icons/colors_icons_grey.png"});
+    chrome.pageAction.setIcon({tabId: tabId, path: "icons/icon_grey.png"});
   }
 
   me.displayOverriden = function(tabId){
-    chrome.pageAction.setIcon({tabId: tabId, path: "icons/colors_icons.png"});
+    chrome.pageAction.setIcon({tabId: tabId, path: "icons/icon.png"});
   }
   me.setDefaults();
   me.getOverrides();
