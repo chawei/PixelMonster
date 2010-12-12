@@ -1,34 +1,3 @@
-// function WGMonster(img) {
-// 	var parent = img.parentNode; 
-// 	var x = 0;
-// 	var y = 0;
-// 	var width;
-// 	var height;
-// 	
-// 	function init() {
-//     var canvasElement = document.createElement('canvas');	
-//   	canvasElement.height= Math.floor(height)+160;
-//   	canvasElement.width= Math.floor(width)+600;
-//   	canvasElement.style.position = "absolute";
-//   	canvasElement.style.left = "-300px";
-//   	canvasElement.style.top = "-80px";
-//   	canvasElement.style.zIndex = -3;
-//   	htmlTxtfield.appendChild(canvasElement);
-//   	var processingInstance = new Processing(canvasElement, sketchProc);
-//   }
-//   
-//   function sketchProc(processing) {
-//     processing.setup = function() {
-// 			processing.smooth();
-//   		processing.frameRate(20);
-//   		this.drawFreehandRect( x, y, width, height, false);
-//     }
-//     processing.draw = function() {
-// 	
-// 		}
-// 	}
-// }
-
 
 Processing.prototype.getImgAvgColor = function() {
 	var cellSize = 10;
@@ -56,12 +25,21 @@ Processing.prototype.getImgAvgColor = function() {
 	avgRed = avgRed/numPix;
 	avgGreen = avgGreen/numPix;
 	avgBlue = avgBlue/numPix;
-	
-// 	color average = color(avgRed,avgGreen,avgBlue,100);
 }
 
+Processing.prototype.getColorFromPallette = function(index) {
+	const pallette0 = new Array(this.color(221, 53,140),this.color(133,230,230),this.color(233,233, 22),this.color( 10,179, 10),this.color(199,176,209));
+	const pallette1 = new Array(this.color(242,160,146),this.color(173,157,130),this.color(255,134,117),this.color(129,113, 80),this.color(106, 82, 46));
+	const pallette2 = new Array(this.color(150,208,213),this.color(165,226,222),this.color(171,223,115),this.color(122, 55,113),this.color(151, 49,138));		
+	const pallette3 = new Array(this.color(255, 49, 31),this.color(207,134, 97),this.color(224,125, 83),this.color(102, 69, 53),this.color(255, 94, 25));
+	const pallette4 = new Array(this.color(194,231,205),this.color( 26,114,128),this.color(254,255,190),this.color(227,243,100),this.color(255, 97, 17));
+	const pallettes = new Array(pallette0,pallette1,pallette2,pallette3,pallette4);
 
-function WGImage(divParent) {
+	var rand = Math.floor( this.random(0,5) );
+	return pallettes[index][rand];
+}
+
+function WGImage(divParent,pIdx) {
 	var parent = divParent; 
 	var x = 0;
 	var y = 0;
@@ -77,10 +55,11 @@ function WGImage(divParent) {
 	var isMouseOpening;
 	var drops;
 	var frameRate;
+	var palletteIdx = pIdx;
 	init();
 	
 	function init() {
-		var mSize = Math.round( width/3 + Math.random()*width/3 );
+		var mSize = Math.round( Math.sqrt(width*height)/3 + Math.random()*Math.sqrt(width*height)/3 );
 		var mx = Math.random()>0.5 ? Math.random()*30+10: Math.random()*-30-10;
 	  var my = Math.random()>0.5 ? Math.random()*30+10: Math.random()*-30-10;
 	
@@ -114,7 +93,8 @@ function WGImage(divParent) {
 		contextAnimation = canvasAnimation.getContext('2d');
 		var processingInstanceAnimation = new Processing(canvasAnimation, sketchProcAnimation);
 		
-		monster = new WGMonster1(mx,my,mSize,mSize);
+		var mColor = processingInstanceAnimation.getColorFromPallette(palletteIdx);
+		monster = new WGMonster1(mx,my,mSize,mSize,mColor);
 	}
 
  	function sketchProc(processing) {
@@ -410,7 +390,7 @@ function WGButton(btn,left,top,mode){
   }
 }
 
-function WGMonster1(xx,yy,width,height) {
+function WGMonster1(xx,yy,width,height,color) {
 	this.x = xx;
 	this.y = yy;
 	var w = width;
@@ -420,7 +400,7 @@ function WGMonster1(xx,yy,width,height) {
 	var mx = 0; // 1 0 -1
   var my = 1; // 1 0 -1
 	var steps = 0;
-	var mColor;
+	var mColor = color;
 	
 	this.setMoving = function(processing){
 		if(mx==0){
@@ -479,17 +459,17 @@ function WGMonster1(xx,yy,width,height) {
 	}
 
 	this.drawMonter = function(processing){
-		if(mColor==null) {
-			var c1 = processing.random(200,255);
-			var c2 = processing.random(0,100);
-			var c3 = processing.random(0,100);
-			if(Math.random()<0.33)
-				mColor = processing.color( c1,c2,c3 );
-			else if(Math.random()<0.66)
-				mColor = processing.color( c2,c1,c3 );
-			else
-				mColor = processing.color( c3,c2,c1 );
-		}
+		// if(mColor==null) {
+		// 	var c1 = processing.random(200,255);
+		// 	var c2 = processing.random(0,100);
+		// 	var c3 = processing.random(0,100);
+		// 	if(Math.random()<0.33)
+		// 		mColor = processing.color( c1,c2,c3 );
+		// 	else if(Math.random()<0.66)
+		// 		mColor = processing.color( c2,c1,c3 );
+		// 	else
+		// 		mColor = processing.color( c3,c2,c1 );
+		// }
 		
 		processing.pushMatrix();
 		processing.translate(this.x,this.y);
@@ -540,14 +520,14 @@ function WGMonster1(xx,yy,width,height) {
 		processing.stroke(0);
 		processing.beginShape(processing.TRIANGLES);
 		if(mx<0) {
-			processing.vertex(0,height/2-mouseSize*8);
+			processing.vertex(0,height/2-mouseSize*w/8);
 	 		processing.vertex(width/2,height/2);
-	 		processing.vertex(0,height/2+mouseSize*8);
+	 		processing.vertex(0,height/2+mouseSize*w/8);
 		}
 		else {
-			processing.vertex(height,height/2-mouseSize*8);
+			processing.vertex(height,height/2-mouseSize*w/8);
 	 		processing.vertex(width/2,height/2);
-	 		processing.vertex(height,height/2+mouseSize*8);
+	 		processing.vertex(height,height/2+mouseSize*w/8);
 		}
 		processing.endShape();
 

@@ -1,5 +1,6 @@
 function PixelMonster() {
 	
+	var palletteIdx = Math.floor( Math.random()*5 );
 	var adImageLeft;
 	var adImageRight;	
 	
@@ -52,7 +53,7 @@ function PixelMonster() {
   }
   
   function createMonster(elem) {
-		var newMonster = new WGImage(elem);
+		var newMonster = new WGImage(elem,palletteIdx);
 	}
   
   function sketchProc(processing) {

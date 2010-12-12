@@ -5,10 +5,6 @@
 
 
 - WGImage
+	- drawImage on canvas need to check image with and height in html
 
-  - Change <img /> to 
-		<span class="wg_monster">
-			<canvas class="wg_image" />
-			<canvas class="wg_monster" />
-			<img class="hide"/>
-		</span>
+
