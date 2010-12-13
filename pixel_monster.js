@@ -5,14 +5,12 @@ function PixelMonster() {
 	var adImageRight;	
 	
   this.init = function() {
-//  	setTimeout ( modifyUI, 3000 );
-  	
   	$('img').each(function() {
-  	  if ($(this).parent('.wg_monster_container').length == 0) {
+  	  if ($(this).parent('.wg_monster_container').length == 0 && $(this).width() >= 50 && $(this).height() >= 50) {
   	    $(this).wrap("<span class='wg_monster_container' \
   	                  style='position: relative; display: inline-block; \
   	                         float: none; left: 0; top: 0; border: none; outline: none; \
-  	                         margin: 0; padding: 0;' />");
+  	                         margin: 0; padding: 0; text-indent: 0;' />");
   	    var wg_container = $(this).parent('.wg_monster_container');
   	    wg_container.append("<div class='call_monster_btn' \
   	                        style='position: absolute; top:0; left:0; \
@@ -22,9 +20,7 @@ function PixelMonster() {
   	                        padding: 0; margin: 0;\
   	                        float: none;'></div>");
   	    
-  	    if($(this).css('position') == 'absolute') {
-  	      wg_container.css('width', $(this).width()).css('height', $(this).height());
-  	    }
+  	    wg_container.css('width', $(this).width()).css('height', $(this).height());
       }
   	});
   	
@@ -74,7 +70,5 @@ function PixelMonster() {
 			
     }
   }
-  
-//	function modifyUI() {}
 	
 }
