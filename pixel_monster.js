@@ -21,6 +21,10 @@ function PixelMonster() {
   	                        width: 30px; height: 30px;\
   	                        padding: 0; margin: 0;\
   	                        float: none;'></div>");
+  	    
+  	    if($(this).css('position') == 'absolute') {
+  	      wg_container.css('width', $(this).width()).css('height', $(this).height());
+  	    }
       }
   	});
   	
