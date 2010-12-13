@@ -6,12 +6,18 @@ function PixelMonster() {
 	
   this.init = function() {
   	$('img').each(function() {
-  	  if ($(this).parent('.wg_monster_container').length == 0 && $(this).width() >= 50 && $(this).height() >= 50) {
+  	  if ($(this).parent('.wg_monster_container').length == 0 
+  	      && $(this).width() >= 50 && $(this).height() >= 50 
+  	      && $(this).css('position') != 'absolute') {
   	    $(this).wrap("<span class='wg_monster_container' \
   	                  style='position: relative; display: inline-block; \
   	                         float: none; left: 0; top: 0; border: none; outline: none; \
   	                         margin: 0; padding: 0; text-indent: 0;' />");
   	    var wg_container = $(this).parent('.wg_monster_container');
+  	    //wg_container.wrap("<div class='wg_monster_outer' \
+  	    //                   style='position: absolute;' />");
+  	    //wg_outer = wg_container.parent('.wg_monster_outer');
+  	    //wg_outer.css('left', $(this).position().left).css('top', $(this).position().top);
   	    wg_container.append("<div class='call_monster_btn' \
   	                        style='position: absolute; top:0; left:0; \
   	                        display: none; cursor: pointer; \
