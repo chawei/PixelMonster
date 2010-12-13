@@ -36,6 +36,7 @@ function CurrentPage ()
 
   me.callInjectCss = function (){	
    chrome.tabs.sendRequest(me.CurrentTabId, {action: "injectCss", css: me.CssToInject} , null);
+   chrome.tabs.sendRequest(me.CurrentTabId, {action: "initWG"}, null); // Init Monster
    me.displayOverriden(me.CurrentTabId);
   }
 
@@ -111,11 +112,11 @@ function CurrentPage ()
 				  me.callInitWG();
 				}
 				me.displayOverriden(tabId);
-	    }
-	    else
+	    } else {
 		  	me.displayDefault(tabId);
+	  	}
 	
-	  chrome.pageAction.show(tabId);
+	    chrome.pageAction.show(tabId);
 	  });
   }
 

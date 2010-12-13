@@ -10,7 +10,10 @@ var objCurrentPage = BackgroundPage.objCurrentPage;
 function ChangeBtnState(BtnId, BtnText, overrideType, blnOverriden, localStorageValue, addOrRemove, overrideFn){
     var btn = document.getElementById(BtnId);
     btn.innerHTML = BtnText;
-    btn.onclick = function(){objCurrentPage.manageOverride.call(this, overrideType, blnOverriden, localStorageValue, addOrRemove, overrideFn); DisplayButtons();};
+    btn.onclick = function(){
+      objCurrentPage.manageOverride.call(this, overrideType, blnOverriden, localStorageValue, addOrRemove, overrideFn);
+      DisplayButtons();
+    };
 }
 
 function DisplayButtons(){

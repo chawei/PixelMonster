@@ -14,10 +14,6 @@ function PixelMonster() {
   	                         left: 0; top: 0; outline: none; \
   	                         text-indent: 0;' />");
   	    var wg_container = $(this).parent('.wg_monster_container');
-  	    //wg_container.wrap("<div class='wg_monster_outer' \
-  	    //                   style='position: absolute;' />");
-  	    //wg_outer = wg_container.parent('.wg_monster_outer');
-  	    //wg_outer.css('left', $(this).position().left).css('top', $(this).position().top);
   	    wg_container.append("<div class='call_monster_btn' \
   	                        style='position: absolute; top:0; left:0; \
   	                        display: none; cursor: pointer; \
