@@ -11,7 +11,7 @@ function PixelMonster() {
   	      && $(this).css('position') != 'absolute') {
   	    $(this).wrap("<span class='wg_monster_container' \
   	                  style='position: relative; display: inline-block; \
-  	                         left: 0; top: 0; border: none; outline: none; \
+  	                         left: 0; top: 0; outline: none; \
   	                         text-indent: 0;' />");
   	    var wg_container = $(this).parent('.wg_monster_container');
   	    //wg_container.wrap("<div class='wg_monster_outer' \
@@ -38,6 +38,8 @@ function PixelMonster() {
   	                .css('padding-right', $(this).css('padding-right'))
   	                .css('padding-bottom', $(this).css('padding-bottom'))
   	                .css('padding-left', $(this).css('padding-left'));
+  	                
+  	    $(this).css('margin', '0').css('padding', '0');
       }
   	});
   	
