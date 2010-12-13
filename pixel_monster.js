@@ -11,8 +11,8 @@ function PixelMonster() {
   	      && $(this).css('position') != 'absolute') {
   	    $(this).wrap("<span class='wg_monster_container' \
   	                  style='position: relative; display: inline-block; \
-  	                         float: none; left: 0; top: 0; border: none; outline: none; \
-  	                         margin: 0; padding: 0; text-indent: 0;' />");
+  	                         left: 0; top: 0; border: none; outline: none; \
+  	                         text-indent: 0;' />");
   	    var wg_container = $(this).parent('.wg_monster_container');
   	    //wg_container.wrap("<div class='wg_monster_outer' \
   	    //                   style='position: absolute;' />");
@@ -27,6 +27,17 @@ function PixelMonster() {
   	                        float: none;'></div>");
   	    
   	    wg_container.css('width', $(this).width()).css('height', $(this).height());
+  	    wg_container.css('float', $(this).css('float'))
+  	                .css('margin', $(this).css('margin'))
+  	                .css('margin-top', $(this).css('margin-top'))
+  	                .css('margin-right', $(this).css('margin-right'))
+  	                .css('margin-bottom', $(this).css('margin-bottom'))
+  	                .css('margin-left', $(this).css('margin-left'))
+  	                .css('padding', $(this).css('padding'))
+  	                .css('padding-top', $(this).css('padding-top'))
+  	                .css('padding-right', $(this).css('padding-right'))
+  	                .css('padding-bottom', $(this).css('padding-bottom'))
+  	                .css('padding-left', $(this).css('padding-left'));
       }
   	});
   	
