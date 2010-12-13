@@ -76,7 +76,8 @@ function WGImage(divParent,pIdx) {
   	parent[0].appendChild(canvasElement);
 		context = canvasElement.getContext('2d');
 		parent.find('img').each(function(){
-			context.drawImage(this, $(this).position().left, $(this).position().top);
+//			console.log( );
+			context.drawImage(this, $(this).position().left, $(this).position().top,$(this).width(), $(this).height());
 		});
 		// var pixels = context.getImageData(0, 0, canvasElement.width, canvasElement.height);
 		
